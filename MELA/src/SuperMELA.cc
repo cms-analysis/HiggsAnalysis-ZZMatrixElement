@@ -496,7 +496,9 @@ void SuperMELA::calc_mZZ_range(const double mHVal, double& low_M, double& high_M
   //high_M=sqrts_*1000.;
 
 #ifdef _melapkgpathstr_
-  const string MELAPKGPATH = _melapkgpathstr_;
+  //const string MELAPKGPATH = _melapkgpathstr_;
+  string MELAPKGPATH = std::getenv( "CMSSW_BASE" );
+  MELAPKGPATH+="/src/ZZMatrixElement/MELA/";
 #else
   cout << "SuperMELA::calc_mZZ_range: MELA package path is undefined! Please modify the makefle or the makefile-equivalent!" << endl;
   assert(0);
