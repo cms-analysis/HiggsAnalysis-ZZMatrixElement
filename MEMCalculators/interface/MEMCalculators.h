@@ -339,7 +339,7 @@ private:
 	/// Used for temporary data
 	unsigned int m_uIbuffer;
 	double m_Dbuffer;
-	vector<complex<double> > *m_VCbuffer;
+	vector<complex<double> > m_VCbuffer;
 	
 	/// debug flag
 	bool debug;

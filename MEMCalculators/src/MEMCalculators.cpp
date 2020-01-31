@@ -340,8 +340,6 @@ MEMs::MEMs(double collisionEnergy, double sKD_mass, string PDFName, bool debug_)
             m_computedME[iProcess][iMemCalc] = -999.;
 
     m_weight = 0.0;
-	
-	m_VCbuffer = new vector<complex<double> >;
 }
 
 
@@ -444,19 +442,19 @@ int MEMs::computeME_Interference(Processes process, MEMCalcs calculator, vector<
 	/// Calculate the full term
 	if( (m_err=computeME( process, calculator, partP, partId, (vector<complex<double> >*) NULL, DecayCouplings, me2process))!=0 ) return m_err;
 	
-	/// Prepare a buffer vector (pointer)
-	(*m_VCbuffer).resize( (*DecayCouplings).size(), complex<double>( 0, 0 ) );	// should be a vector (pointer) of zeroes
+	/// Prepare a buffer vector
+	m_VCbuffer.resize( (*DecayCouplings).size(), complex<double>( 0, 0 ) );	// should be a vector of zeroes
 	
 	/// Subtract individual pure term(s)
 	for( m_uIbuffer=0; m_uIbuffer<(*DecayCouplings).size(); m_uIbuffer++ )
 	{
 		if( norm((*DecayCouplings)[m_uIbuffer]) > 0 ) 
 		{
-			(*m_VCbuffer)[m_uIbuffer] = (*DecayCouplings)[m_uIbuffer];	// load a current coupling
-			if( (m_err=computeME( process, calculator, partP, partId, (vector<complex<double> >*) NULL, m_VCbuffer, m_Dbuffer))!=0 ) return m_err;	// pure term(s)
+			m_VCbuffer[m_uIbuffer] = (*DecayCouplings)[m_uIbuffer];	// load a current coupling
+			if( (m_err=computeME( process, calculator, partP, partId, (vector<complex<double> >*) NULL, &m_VCbuffer, m_Dbuffer))!=0 ) return m_err;	// pure term(s)
 			me2process -= m_Dbuffer;	// subtracting a pure term
 			
-			(*m_VCbuffer)[m_uIbuffer] = complex<double>( 0, 0 );	// reverting back to 0 coupling
+			m_VCbuffer[m_uIbuffer] = complex<double>( 0, 0 );	// reverting back to 0 coupling
 		}
 	}
 	
