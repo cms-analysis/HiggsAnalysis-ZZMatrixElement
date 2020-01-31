@@ -304,15 +304,16 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1)
 	p0[1]=(long double) pi0[1]; p0[2]=(long double) pi0[2]; p0[3]=(long double) pi0[3];
 	p1[1]=(long double) pi1[1]; p1[2]=(long double) pi1[2]; p1[3]=(long double) pi1[3];
 	
+	
+	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
+	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
+
 	/// For debugging
 	if( debug )
 	{
 		printf( "m(01) = %.10E\n",
 			sqrt( (p0[0]+p1[0])*(p0[0]+p1[0]) - (p0[1]+p1[1])*(p0[1]+p1[1]) - (p0[2]+p1[2])*(p0[2]+p1[2]) - (p0[3]+p1[3])*(p0[3]+p1[3]) ) );
 	}
-	
-	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
-	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
 	
 	long double totalp[4];
 	int count=0;
@@ -353,16 +354,16 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1, double mass2
 	p1[1]=(long double) pi1[1]; p1[2]=(long double) pi1[2]; p1[3]=(long double) pi1[3];
 	p2[1]=(long double) pi2[1]; p2[2]=(long double) pi2[2]; p2[3]=(long double) pi2[3];
 	
+	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
+	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
+	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
+	
 	/// For debugging
 	if( debug )
 	{
 		printf( "m(01) = %.10E\n",
 			sqrt( (p0[0]+p1[0])*(p0[0]+p1[0]) - (p0[1]+p1[1])*(p0[1]+p1[1]) - (p0[2]+p1[2])*(p0[2]+p1[2]) - (p0[3]+p1[3])*(p0[3]+p1[3]) ) );
 	}
-	
-	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
-	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
-	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
 	
 	long double totalp[4];
 	int count=0;
@@ -407,6 +408,11 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1, double mass2
 	p2[1]=(long double) pi2[1]; p2[2]=(long double) pi2[2]; p2[3]=(long double) pi2[3];
 	p3[1]=(long double) pi3[1]; p3[2]=(long double) pi3[2]; p3[3]=(long double) pi3[3];
 	
+	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
+	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
+	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
+	p3[0] = sqrt( mass3*mass3 + p3[1]*p3[1] + p3[2]*p3[2] + p3[3]*p3[3] );
+	
 	/// For debugging
 	if( debug )
 	{
@@ -414,12 +420,7 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1, double mass2
 			sqrt( (p0[0]+p1[0])*(p0[0]+p1[0]) - (p0[1]+p1[1])*(p0[1]+p1[1]) - (p0[2]+p1[2])*(p0[2]+p1[2]) - (p0[3]+p1[3])*(p0[3]+p1[3]) ),
 			sqrt( (p2[0]+p3[0])*(p2[0]+p3[0]) - (p2[1]+p3[1])*(p2[1]+p3[1]) - (p2[2]+p3[2])*(p2[2]+p3[2]) - (p2[3]+p3[3])*(p2[3]+p3[3]) ) );
 	}
-	
-	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
-	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
-	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
-	p3[0] = sqrt( mass3*mass3 + p3[1]*p3[1] + p3[2]*p3[2] + p3[3]*p3[3] );
-	
+
 	long double totalp[4];
 	int count=0;
 	for( ; count<4; count++ ) {totalp[count]=p0[count] + p1[count] + p2[count] + p3[count]; }
@@ -467,6 +468,12 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1, double mass2
 	p3[1]=(long double) pi3[1]; p3[2]=(long double) pi3[2]; p3[3]=(long double) pi3[3];
 	p4[1]=(long double) pi4[1]; p4[2]=(long double) pi4[2]; p4[3]=(long double) pi4[3];
 	
+	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
+	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
+	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
+	p3[0] = sqrt( mass3*mass3 + p3[1]*p3[1] + p3[2]*p3[2] + p3[3]*p3[3] );
+	p4[0] = sqrt( mass4*mass4 + p4[1]*p4[1] + p4[2]*p4[2] + p4[3]*p4[3] );
+	
 	/// For debugging
 	if( debug )
 	{
@@ -475,12 +482,6 @@ void Boost2CM(double mass0, double *pi0, double mass1, double *pi1, double mass2
 			sqrt( (p2[0]+p3[0])*(p2[0]+p3[0]) - (p2[1]+p3[1])*(p2[1]+p3[1]) - (p2[2]+p3[2])*(p2[2]+p3[2]) - (p2[3]+p3[3])*(p2[3]+p3[3]) ) );
 	}
 
-	p0[0] = sqrt( mass0*mass0 + p0[1]*p0[1] + p0[2]*p0[2] + p0[3]*p0[3] );
-	p1[0] = sqrt( mass1*mass1 + p1[1]*p1[1] + p1[2]*p1[2] + p1[3]*p1[3] );
-	p2[0] = sqrt( mass2*mass2 + p2[1]*p2[1] + p2[2]*p2[2] + p2[3]*p2[3] );
-	p3[0] = sqrt( mass3*mass3 + p3[1]*p3[1] + p3[2]*p3[2] + p3[3]*p3[3] );
-	p4[0] = sqrt( mass4*mass4 + p4[1]*p4[1] + p4[2]*p4[2] + p4[3]*p4[3] );
-	
 	long double totalp[4];
 	int count=0;
 	for( ; count<4; count++ ) {totalp[count]=p0[count] + p1[count] + p2[count] + p3[count] + p4[count]; }
