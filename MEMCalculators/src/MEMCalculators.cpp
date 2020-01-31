@@ -145,7 +145,7 @@ const TString MEMs::m_processNameMEKD[MEMNames::NUM_PROCESSES] = {
 ///----------------------------------------------------------------------------------------------
 /// MEMs::MEMs - constructor
 ///----------------------------------------------------------------------------------------------
-MEMs::MEMs(double collisionEnergy, double sKD_mass, string PDFName, bool debug_)
+MEMs::MEMs(double collisionEnergy, double sKD_mass, string PDFName, bool debug_) : m_MEKD() , m_MELA()
 {
     /// Mapping between MEMs process enums and MELA process enums 
     /// - initialisation (to be updated)
@@ -342,6 +342,13 @@ MEMs::MEMs(double collisionEnergy, double sKD_mass, string PDFName, bool debug_)
     m_weight = 0.0;
 }
 
+///----------------------------------------------------------------------------------------------
+/// MEMs::~MEMs() - Delete heap-allocated objects
+///----------------------------------------------------------------------------------------------
+MEMs::~MEMs() {
+	delete m_MEKD;
+	delete m_MELA;
+}
 
 
 ///----------------------------------------------------------------------------------------------

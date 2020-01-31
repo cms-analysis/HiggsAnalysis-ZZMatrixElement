@@ -93,6 +93,11 @@ public:
 	///
 	MEMs(double collisionEnergy = 8, double sKD_mass = 125.6, string PDFName = "", bool debug_=false);
 	
+    ///
+    /// Destructor
+    ///
+    ~MEMs();
+
 	///
 	/// Compute individual ME for the specified process.
 	///
