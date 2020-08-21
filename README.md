@@ -6,6 +6,23 @@ HiggsAnalysis-ZZMatrixElement
 [Wiki page for the MEKD package](https://twiki.cern.ch/twiki/bin/view/CMS/HZZ4lMEKD)
 
 
+NOTICE ON MELA MIGRATION AND THE DEPRECATION OF THIS REPOSITORY
+----------------------------------------------------------------
+
+The MELA package is currently undergoing migration, and all support for this repository is being gradually dropped. Please obtain the MELA package using the command
+```
+git clone https://github.com/JHUGen/JHUGenMELA.git
+```
+in the future and kindly make the effort to migrate. The only changes needed are in the include paths, i.e.
+```
+ZZMatrixElement/MELA -> JHUGenMELA/MELA
+```
+and in the library name, i.e.
+```
+libZZMatrixElementMELA -> libJHUGenMELAMELA
+```
+
+
 Checking out on top of other CMSSW packages
 -------------------------------------------
 
